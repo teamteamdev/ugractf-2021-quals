@@ -1,0 +1,8 @@
+category: "stegano"
+name:     "Восьмиборье"
+points:   150
+author:   abbradar
+description: |
+    <p>При осмотре места преступления был обнаружен диск с разнообразными файлами. Сможете отыскать на нём секретную информацию?</p>
+generator: generate.py
+submit_not_after: "2020-05-24T19:00:00Z"
