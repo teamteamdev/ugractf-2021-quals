@@ -1,0 +1,5 @@
+aiohttp
+aiohttp_jinja2
+aiohttp_session
+dataclasses_json
+numpy

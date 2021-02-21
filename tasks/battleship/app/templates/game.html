@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Морской бой</title>
+    </head>
+    <body>
+        <p>Сыграйте в морской бой!</p>
+        <form onsubmit="fire(event)">
+            X: <input type="text" name="x"><br />
+            Y: <input type="text" name="y"><br />
+            <button type="submit">Выстрелить</button>
+        </form>
+        <button type="button" onclick="reset(event)">Начать заново</button>
+        <span id="result"></span>
+        <script>
+         async function call(path, body) {
+             const response = await fetch(`${location.protocol}//${location.host}${location.pathname}/${path}`, {
+                 method: "POST",
+                 headers: {
+                     "Content-Type": "application/x-www-form-urlencoded",
+                 },
+                 body: body,
+             });
+             return response.text();
+         }
+
+         async function fire(event) {
+             event.preventDefault();
+             const x = Number(event.target.elements["x"].value);
+             const y = Number(event.target.elements["y"].value);
+             console.log("x", x, "y", y);
+             const data = new URLSearchParams();
+             data.append("x", x);
+             data.append("y", y);
+             const response = await call("fire", data);
+             const span = document.getElementById("result");
+             span.innerHTML = response;
+         }
+
+         async function reset(event) {
+             event.preventDefault();
+             const response = await call("reset");
+             const span = document.getElementById("result");
+             span.innerHTML = response;
+         }
+        </script>
+    </body>
+</html>
