@@ -1,0 +1,10 @@
+category:    "pwn"
+name:        "Антивирус"
+points:      250
+author:      "abbradar"
+description: >
+    <p>Югорские разработчики создали новый облачный антивирус, с больщой точностью определяющий вредоносные приложения. Но хорошо ли протестирован сам антивирус?</p>
+generator:   generate.py
+daemon:      server/start_server.sh
+daemon_socket: "antivirus.sock"
+submit_not_after: "2020-06-06T12:15:00Z"

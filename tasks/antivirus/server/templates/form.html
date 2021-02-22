@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Югорский Национальный Исследовательский Антивирус Информационных Технологий</title>
+    </head>
+    <body>
+        <p><h3>АНТИВИРУС</h3></p>
+        <p>
+            Загрузите файл, и укажите его расширение из списка. В настоящий момент поддерживаются только текстовые и исполняемые файлы.
+        </p>
+
+        <p>
+            <form method="post" enctype="multipart/form-data">
+                <p>
+                    Выберите расширение:
+                    <select name="ext">
+                        <option value="txt">Текстовый файл</option>
+                        <option value="exe">Исполняемый файл</option>
+                    </select>
+                </p>
+                <p>
+                    Выберите файл для проверки:
+                    <input type="file" name="file">
+                </p>
+                <input type="submit" value="Проверить">
+            </form>
+        </p>
+
+        {% if success is not none %}
+            {% if success %}
+                <p style="color:green">Файл безопасен!</p>
+            {% else %}
+                <p style="color:red">НАЙДЕН ВИРУС!</p>
+                <p>{{ errormsg }}</p>
+            {% endif %}
+        {% endif %}
+    </body>
+</html>
