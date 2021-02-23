@@ -1,0 +1,8 @@
+category: "reverse"
+name:     "Вокруг да около"
+points:   150
+author:   abbradar
+description: |
+    <p>Компания "Круглые решения" представила свой новый программный продукт — аналоговые часы. Сможете найти в нём секретное послание?</p>
+generator: generate.py
+submit_not_after: "2020-05-24T19:00:00Z"
