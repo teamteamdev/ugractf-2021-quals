@@ -1,0 +1,101 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    background: #222830;
+    color: #010204;
+}
+
+.controls {
+    display: flex;
+    width: 40px;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+button {
+    -webkit-appearance: none;
+    background: #7C8692;
+    height: 17px;
+    width: 17px;
+    line-height: 17px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #A4ADB6;
+    border-radius: 0;
+}
+
+.sequencer {
+    margin: 10px auto;
+    width: min-content;
+    height: min-content;
+    background: #65748C;
+    border-radius: 15px;
+    padding: 20px 5px;
+    display: flex;
+}
+
+.node {
+    width: 20px;
+    height: 20px;
+    background: #999;
+    border: 1px solid #333;
+    margin: 2px 1px;
+}
+
+.track {
+    height: 20px;
+    margin: 2px 1px;
+    border: 1px solid #A7B5B7;
+    font-size: 13px;
+    line-height: 20px;
+    border-bottom-color: #7D879C;
+    padding-left: 5px;
+    padding-right: 50px;
+    margin-left: 5px;
+    background: #A7B5B7;
+}
+
+.bar {
+    padding: 0;
+    height: min-content;
+}
+
+.bar--on {
+    box-shadow: -1px 0 0 #d0400099;
+}
+
+.grid {
+    display: flex;
+    height: auto;
+}
+
+.node--on:nth-child(7n+1) {
+    background: #EAEA43;
+}
+
+.node--on:nth-child(7n+2) {
+    background: #56FF45;
+}
+
+.node--on:nth-child(7n+3) {
+    background: #7EA6C7;
+}
+
+.node--on:nth-child(7n+4) {
+    background: #FF5E00;
+}
+
+.node--on:nth-child(7n+5) {
+    background: #7BC6FF;
+}
+
+.node--on:nth-child(7n+6) {
+    background: #FF8DA5;
+}
+
+.node--on:nth-child(7n) {
+    background: #00C200;
+}
