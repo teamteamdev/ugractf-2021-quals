@@ -136,6 +136,8 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 void MainWindow::roundFun()
 {
     auto font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    font.setPixelSize(15);
+    qDebug() << "size" << font.pixelSize();
     auto labelSizes = this->createLabels(font);
     for (const auto &labelInfo : labelSizes) {
         qDebug() << "Adding label" << labelInfo.chars << labelInfo.rect << labelInfo.right;
