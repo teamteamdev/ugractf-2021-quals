@@ -32,7 +32,7 @@ def generate():
 
     json.dump({
         "flags": [flag],
-        "substitutions": {"ciphertext", },
+        "substitutions": {"ciphertext", ciphertext},
         "urls": []
     }, sys.stdout)
 
