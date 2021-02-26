@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% if type == "smallercitylights" %}
+        <title>Система проверки правильности ответа на задание «Огни города поменьше»</title>
+        {% elif type == "dreamteam" %}
+        <title>Время, которое не ждёт</title>
+        {% endif %}
+        <style>
+            body { background: #001133; color: white; max-width: 55em; margin: 0 auto; padding: 1.5em;
+                   font-family: Arial, sans-serif; }
+            body.dreamteam { min-height: 100vh; box-sizing: border-box; background: linear-gradient(0deg, rgba(0,17,51,1) 0%, rgba(18,85,54,1) 80%, rgba(58,237,61,1) 100%); }
+            input { font: inherit; color: inherit; background: rgba(255, 255, 255, 0.15); border: 1px solid #335599; }
+            input[type=text] { width: 30em }
+            label { display: inline-block; width: 10em; text-align: left }
+            form { text-align: center }
+            tt { background: rgba(255, 255, 255, 0.15) }
+            a { color: #99BBFF; }
+            footer {
+                margin-top: 4em;
+                font-size: 75%;
+                color: #335599;
+            }
+            .flag {
+                color: #99BBFF;
+                cursor: pointer;
+                border-bottom: 1px dashed;
+                line-height: 0.1em;
+            }
+            .flag tt {
+                display: none;
+                font-size: 70%;
+                color: white;
+            }
+            .flag:hover tt {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body class="{{ type }}">
+        {% if status == "flag" %}
+            <h1>Ответ верный</h1>
+            <p>Вот строка, за которой вы сюда пришли: <span class="flag">Показать <tt>{{ flag }}</tt></span>
+        {% elif status == "code-used" %}
+            <h1>Одноразовый код уже использован</h1>
+            <p>Одноразовые коды нельзя использовать повторно.</p>
+            <p>Мы не можем ничего сказать насчёт правильности или неправильности введённого ответа.</p>
+            <p><a href="./">Вернуться</a></p>
+        {% elif status == "code-wrong" %}
+            <h1>Одноразовый код неправильный</h1>
+            <p>Возможно, вы что-то не так скопировали. В любом случае, за попытку это не считается.</p>
+            <p>Мы не можем ничего сказать насчёт правильности или неправильности введённого ответа.</p>
+            <p><a href="./">Вернуться</a></p>
+        {% elif status == "answer-wrong" %}
+            <h1>Ответ неверный</h1>
+            <p>Одноразовый код был потрачен.</p>
+            <p>Помните о необходимости строго соблюдать требования ввода ответа. Ответы, введённые с нарушением требований, приравниваются к неверным.</p>
+            <p><a href="./">Вернуться</a></p>
+        {% else %}
+            {% if type == "smallercitylights" %}
+                <h1>Система проверки правильности ответа на задание «Огни города поменьше»</h1>
+                <p>Строго соблюдайте формат ввода адреса. Необходимо указать краткое название страны согласно Общероссийскому классификатору стран мира, полное название региона страны, тип и название населённого пункта, тип и полное название улицы или дороги, тип и значение численной адресации конкретного здания.</p>
+                <p>Пример: <tt>Украина, Волынская область, г. Луцк, ул. Сенаторки Левчановской, д. 4</tt></p>
+            {% elif type == "dreamteam" %}
+                <h1>Время, которое не ждёт. Система проверки точности указания времени</h1>
+                <p>Строго соблюдайте формат ввода времени ISO 8601: указывайте год, день, месяц, часы, минуты, часовой пояс, используя все предназначенные для этого разделители. Следует указывать именно тот часовой пояс, который действовал в момент съёмки в этом месте.</p>
+                <p>Пример: <tt>1986-05-31T14:28+08:00</tt></p>
+            {% endif %}
+            <form method="post" action="./check">
+                <p><label for="answer">{% if type == "smallercitylights" %}Адрес{% elif type == "dreamteam" %}Время{% endif %}</label>
+                   <input type="text" id="answer" name="answer" value="" />
+                <p><label for="code">Одноразовый код</label>
+                   <input type="text" id="code" name="code" value="" />
+                <p><label for="submit"></label><input type="submit" value="Проверить" />
+            </form>
+        {% endif %}
+        <footer>
+            {% if type == "smallercitylights" %}
+            © ООО «Горящие задачи», филиал в Ханты-Мансийском автономном округе — Югре, 2021. ООО «Горящие задачи» — горят не только огни городов!
+            {% elif type == "dreamteam" %}
+            © ООО «Задачи, которые бесят», филиал в Ханты-Мансийском автономном округе — Югре, 2021
+            {% endif %}
+        </footer>
+    </body>
+</html>
