@@ -5,3 +5,5 @@ author:   abbradar
 description: |
     <p>Мы разработали новую игру на тему бессмертной классики. Теперь вражеский корабль всего один, зато он передвигается! Сможете попасть?</p>
 generator: generate.py
+daemon: app/server.py
+daemon_socket: "battleship.sock"
