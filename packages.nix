@@ -5,6 +5,7 @@
     gnused
     inkscape
     xorg.xorgserver
+    cdrtools
   ];
 
   pythonPackages = self: with self; [
