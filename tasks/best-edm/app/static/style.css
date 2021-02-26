@@ -6,18 +6,65 @@ body {
     color: #010204;
 }
 
+.layout {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
 .controls {
     display: flex;
-    width: 40px;
+    width: 120px;
     justify-content: space-around;
     margin: 0 auto;
+}
+
+.block.export {
+    width: 200px;
+    height: min-content;
+    padding: 7px;
+}
+
+.block.info {
+    width: 200px;
+    height: 100px;
+    padding: 7px;
+}
+
+.block-inside {
+    background: #A7B5B7;
+    font-size: 12px;
+    font-style: normal;
+    width: 100%;
+    height: 100%;
+}
+
+.block-inside h1 {
+    font-size: 10px;
+    background: #fff3;
+    margin: 0;    
+    padding: 2px 4px;
+    font-style: italic;
+}
+
+.block-inside p {
+    margin: 2px 0 2px;
+    font-size: 10px;
+    font-weight: normal;
+    padding: 2px 4px;
+    max-width: 95%;
 }
 
 button {
     -webkit-appearance: none;
     background: #7C8692;
     height: 17px;
-    width: 17px;
     line-height: 17px;
     font-size: 12px;
     text-align: center;
@@ -25,15 +72,32 @@ button {
     padding: 0;
     border: 1px solid #A4ADB6;
     border-radius: 0;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.sequencer {
-    margin: 10px auto;
+.block-inside button {
+    margin: 5px;
+    border-color: #0009;
+}
+
+button.play {
+    width: 17px;
+}
+
+button.text {
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0 2px;
+}
+
+.block {
+    margin: 10px;
     width: min-content;
     height: min-content;
     background: #65748C;
-    border-radius: 15px;
-    padding: 20px 5px;
+    border-radius: 10px;
+    padding: 20px 7px;
     display: flex;
 }
 

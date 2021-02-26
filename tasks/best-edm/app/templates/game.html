@@ -2,20 +2,37 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8">
-        <title>Ugra Best EDM Music Creator</title>
+        <title>Hantaton Live</title>
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
       <div class="controls">
         <button class="play" id="play" onclick="playGrid()">▶</button>
-        <button class="stop" id="stop">◼</button>
+        <button class="text" id="randomize" onclick="randomizeGrid()">Randomize</button>
       </div>
-      <div class="sequencer" id="sequencer">
-        <div class="grid" id="grid">
+      <div class="layout">
+        <div class="block sequencer" id="sequencer">
+          <div class="grid" id="grid">
+          </div>
+          <div class="tracks" id="tracks">
+          </div>                
         </div>
-        <div class="tracks" id="tracks">
-        </div>                
+        <div class="sidebar">
+          <div class="block export" id="bounce">
+            <div class="block-inside">
+              <h1>Export/Bounce</h1>
+              <p>You can download the render of this project for free for non-commerical use.</p>
+              <p>Note that free renders contain an inaudible watermark to prevent unauthorized usage.</p>
+              <button class="text" onlick="download()">Download</button>
+            </div>
+          </div>
+          <div class="block info" id="infoPanel">
+            <div class="block-inside">
+              <h1 id="infoHeader">Info Panel</h1>
+              <p id="info">The Info View provides a brief description of the user interface element that the mouse is currently over.</p>
+            </div>
+        </div>
       </div>
-      <script src="/static/sequencer.js"></script>
+        <script src="/static/sequencer.js"></script>
     </body>
 </html>

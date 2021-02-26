@@ -1,3 +1,6 @@
+// helper
+function debounce(a,b,c){var d;return function(){var e=this,f=arguments;clearTimeout(d),d=setTimeout(function(){d=null,c||a.apply(e,f)},b),c&&!d&&a.apply(e,f)}};
+
 samples = [
     '2kicks_1.mp3',
     'bass_a_1.mp3',
@@ -20,12 +23,15 @@ samples = [
     audio: new Audio(`/static/samples/${x}`)
 }));
 
-[sequencer, tracks, grid, play, stop] = [
+[sequencer, tracks, grid, play, randomize, bounce, info, infoHeader] = [
     'sequencer',
     'tracks',
     'grid',
     'play',
-    'stop'
+    'randomize',
+    'bounce',
+    'info',
+    'infoHeader',
 ].map(x => document.getElementById(x));
 
 const generateTrack = (sample, idx) => {
@@ -66,7 +72,10 @@ toggleNode = el => {
 };
 
 const sleep = (ms) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+      new Promise(resolve => setTimeout(resolve, ms));
+
+const rndBool = () =>
+      Math.random() > 0.9;
 
 const playBar = bar => {
     nodes = [...bar.children];
@@ -87,4 +96,49 @@ const playGrid = async () => {
     };
 };
 
+const readBar = bar => {
+    nodes = [...bar.children];
+    return nodes
+        .map((node, idx) => node.dataset.on === 'true' ? idx : -1)
+        .filter(node => node >= 0);
+}
+
+const exportGrid = () => {
+    bars = [...grid.children];
+    return bars.map(readBar);
+}
+
+const serializeGrid = exportedGrid =>
+      btoa(exportedGrid.map(bar => bar.join()).join(';'));
+
+const randomizeGrid = () => {
+    bars = [...grid.children];
+    bars.map(bar => {
+        nodes = [...bar.children];
+        nodes.forEach(node => rndBool() && toggleNode(node));
+    });
+}
+
 document.onload = initialize();
+
+// info panel
+
+infoText = {
+    track: ["All enabled grid nodes on a track line will trigger the corresponding sound.", "Track Name"],
+    node: ["Click to toggle a grid node on or off. Enabled grid node produces a sound when the locator is on a node’s bar.", "Grid Node"],
+    bounce: ["Use the Export/Bounce panel to download audio version of this file.", "Export/Bounce Panel"],
+    play: ["Click to start playback.", "Play Button"],
+    stop: ["Click to stop playback.", "Stop Button"],
+    randomize: ["Click to fill the grid with random notes.", "Randomize Button"],
+    sequencer: ["Sequencer area contains the grid of current project. You can draw a pattern here.", "Sequencer Area"],
+    default: [info.innerHTML, infoHeader.innerHTML]
+};
+
+const showInfo = e => {
+    target = e.target.id || e.target.classList;
+    [text, header] = infoText[target] || infoText['default'];
+    info.innerHTML = text;
+    infoHeader.innerHTML = header;
+}
+
+document.body.addEventListener("mouseover", debounce(e => showInfo(e), 25));
