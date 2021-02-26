@@ -54,7 +54,7 @@
      id="layer1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:125%;font-family:monospace;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:monospace;font-stretch:normal;font-variant:normal;"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:125%;font-family:Inter;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:Inter;font-stretch:normal;font-variant:normal;"
        x="1.7634386"
        y="6.0788126"
        id="text132026"><tspan
@@ -62,6 +62,6 @@
          id="tspan132024"
          x="1.7634386"
          y="6.0788126"
-         style="stroke-width:0.26458332px;-inkscape-font-specification:monospace;font-family:monospace;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">+++FLAG+++</tspan></text>
+         style="stroke-width:0.26458332px;-inkscape-font-specification:Inter;font-family:Inter;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">+++FLAG+++</tspan></text>
   </g>
 </svg>
