@@ -7,6 +7,7 @@
     cdrtools
     bubblewrap
     xorg.xorgserver
+    python3.pkgs.gunicorn
   ];
 
   pythonPackages = self: with self; [
