@@ -33,7 +33,7 @@ def generate():
     json.dump({
         "flags": [flag],
         "substitutions": {},
-        "urls": [f"https://battleship.{{hostname}}/{token}"]
+        "urls": [f"https://battleship.{{hostname}}/{token}/"]
     }, sys.stdout)
 
 

@@ -5,6 +5,8 @@
     gnused
     inkscape
     cdrtools
+    bubblewrap
+    xorg.xorgserver
   ];
 
   pythonPackages = self: with self; [
