@@ -4,7 +4,6 @@
     bash
     gnused
     inkscape
-    xorg.xorgserver
     cdrtools
   ];
 

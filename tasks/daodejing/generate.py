@@ -32,20 +32,13 @@ def generate():
         with open(os.path.join(temp_dir, "f.svg"), "w") as f:
             f.write(data)
 
-        display = random.randint(100000, 999999)
-        with subprocess.Popen(f"Xvfb :{display}", shell=True) as p:
-            try:
-                env = os.environ.copy()
-                env["DISPLAY"] = f":{display}"
-                subprocess.check_call("""inkscape --without-gui f.svg
-                                        --verb=EditSelectAll
-                                        --verb=ObjectToPath
-                                        --verb=SelectionCombine
-                                        --verb=FileSave
-                                        --verb=FileQuit
-                                      """.replace("\n", ""), shell=True, cwd=temp_dir, env=env)
-            finally:
-                p.terminate()
+        subprocess.check_call("""inkscape --without-gui f.svg
+                                --verb=EditSelectAll
+                                --verb=ObjectToPath
+                                --verb=SelectionCombine
+                                --verb=FileSave
+                                --verb=FileQuit
+                              """.replace("\n", ""), shell=True, cwd=temp_dir)
 
         with open(os.path.join(target_dir, "daodejing.txt"), "w") as f:
             svg = open(os.path.join(temp_dir, "f.svg")).read()
