@@ -10,6 +10,8 @@ import tempfile
 import subprocess
 from werkzeug.utils import secure_filename
 
+from kyzylborda.supervisor.bubblewrap import MountPoint, BubblewrapSpec, bubblewrap_args
+
 PREFIX = "ugra_who_checks_the_checker_"
 SECRET2 = b"FXLtTMGeR9MyRyLV"
 SALT2_SIZE = 12
@@ -24,7 +26,7 @@ def make_app():
 
     @app.route('/<token>/', methods=["GET"])
     def main_get(token):
-        return render_template("form.html", placeholder=PLACEHOLDER, success=None)
+        return render_template("form.html", success=None)
 
 
     def prepare_path(token):
@@ -58,19 +60,19 @@ def make_app():
         file_path = os.path.join(path.name, "tmp", fname)
         file.save(file_path)
         try:
-            ret = subprocess.run(
-                [sys.executable, "-m", "kyzylborda.sandbox",
-                 "--mount-ro", "/nix/store",
-                 "--mount-ro", f"/etc={path.name}/etc",
-                 "--mount-ro", f"/app=inner_app",
-                 "--mount", f"/tmp/uploads={path.name}/tmp",
-                 "--cd", "/app",
-                 sys.executable, "antivirus.py", ext, f"/tmp/uploads/{fname}"
-                ], stdout=subprocess.PIPE, timeout=10)
+            bspec = BubblewrapSpec(
+                args=[sys.executable, "antivirus.py", ext, f"/tmp/uploads/{fname}"],
+                mounts={
+                    "/etc": MountPoint(f"{path.name}/etc", read_only=True),
+                    "/app": MountPoint("inner_app", read_only=True),
+                    "/tmp/uploads": MountPoint(f"{path.name}/tmp"),
+                },
+                cwd="/app",
+            )
+            args = bubblewrap_args(bspec)
+            ret = subprocess.run(args, stdout=subprocess.PIPE, timeout=10)
         except subprocess.TimeoutExpired:
             return render_template("form.html", success=False, errormsg="Время истекло.")
-        except:
-            abort(500)
 
         path.cleanup()
 
