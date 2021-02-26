@@ -5,7 +5,7 @@ author:   vanyaklimenko
 description: |
     <p>Вот сеанс работы в некой среде:</p>
     <pre>
-          A ← ""
+          A ← 'abcdefghijklmnopqrstuvwxy_1234567890'
           I ← (6 6 ⍴ 1 + ⍳6)+⍉(10 × 6 6 ⍴ 1 + ⍳6)
           S ← 6 6 ⍴ A
           E ← {⌈/⌈/ (~⍵ ⍳ S) × S}
