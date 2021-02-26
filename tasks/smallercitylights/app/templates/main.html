@@ -10,6 +10,7 @@
         <style>
             body { background: #001133; color: white; max-width: 55em; margin: 0 auto; padding: 1.5em;
                    font-family: Arial, sans-serif; }
+            body.dreamteam { min-height: 100vh; box-sizing: border-box; background: linear-gradient(0deg, rgba(0,17,51,1) 0%, rgba(18,85,54,1) 80%, rgba(58,237,61,1) 100%); }
             input { font: inherit; color: inherit; background: rgba(255, 255, 255, 0.15); border: 1px solid #335599; }
             input[type=text] { width: 30em }
             label { display: inline-block; width: 10em; text-align: left }
@@ -37,7 +38,7 @@
             }
         </style>
     </head>
-    <body>
+    <body class="{{ type }}">
         {% if status == "flag" %}
             <h1>Ответ верный</h1>
             <p>Вот строка, за которой вы сюда пришли: <span class="flag">Показать <tt>{{ flag }}</tt></span>
@@ -63,7 +64,7 @@
                 <p>Пример: <tt>Украина, Волынская область, г. Луцк, ул. Сенаторки Левчановской, д. 4</tt></p>
             {% elif type == "dreamteam" %}
                 <h1>Время, которое не ждёт. Система проверки точности указания времени</h1>
-                <p>Строго соблюдайте формат ввода времени ISO 8601: указывайте год, день, месяц, часы, минуты, часовой пояс, используя все предназначенные для этого разделители.</p>
+                <p>Строго соблюдайте формат ввода времени ISO 8601: указывайте год, день, месяц, часы, минуты, часовой пояс, используя все предназначенные для этого разделители. Следует указывать именно тот часовой пояс, который действовал в момент съёмки в этом месте.</p>
                 <p>Пример: <tt>1986-05-31T14:28+08:00</tt></p>
             {% endif %}
             <form method="post" action="./check">

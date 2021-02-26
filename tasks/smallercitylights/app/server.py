@@ -21,10 +21,16 @@ if TYPE == "smallercitylights":
     SALT2_SIZE = 12
     SECRET3 = b"Aengo4Kuaxee7xei"
     HEIC_DATA = open("IMG_0586.HEIC", "rb").read()
+    JPEG_DATA = None
     ANSWERS = {"Россия, Омская область, г. Омск, ул. Богдана Хмельницкого, д. 38"}
 elif TYPE == "dreamteam":
+    PREFIX = "ugra_from_friendship_in_sports_to_the_world_on_the_land_"
+    SECRET2 = b"ohf4achah5quai6A"
+    SALT2_SIZE = 12
+    SECRET3 = b"Ohvaz3iJi8Aetahh"
     HEIC_DATA = None
-    ANSWERS = {}
+    JPEG_DATA = open("gGeQ3Et32Jw.jpg", "rb").read()
+    ANSWERS = {"2018-07-01T17:45+03:00", "2018-07-01T17:46+03:00"}
 
 def verify_code(code):
     h, sig = code[:40], code[40:]
@@ -46,6 +52,17 @@ def build_app():
         if HEIC_DATA:
             resp = web.StreamResponse()
             resp.headers["Content-type"] = "image/heic"
+            await resp.prepare(request)
+            await resp.write(HEIC_DATA)
+            return resp
+        else:
+            raise web.NotFoundError
+
+    @routes.get('/{token}/gGeQ3Et32Jw.jpg')
+    async def jpg(request):
+        if JPEG_DATA:
+            resp = web.StreamResponse()
+            resp.headers["Content-type"] = "image/jpeg"
             await resp.prepare(request)
             await resp.write(HEIC_DATA)
             return resp
