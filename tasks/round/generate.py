@@ -63,7 +63,7 @@ def generate():
     prefix, suffix = encode_flag(flag)
 
     data = open(os.path.join("private", "round.exe"), "rb").read()
-    print(SUFFIX_SIZE, len(flag), len(prefix), len(suffix))
+    #print(SUFFIX_SIZE, len(flag), len(prefix), len(suffix))
     data = replace_placeholder(data, b"PREFIX", prefix)
     data = replace_placeholder(data, b"SUFFIX", suffix)
     open(os.path.join(target_dir, "round.exe"), "wb").write(data)
