@@ -20,5 +20,5 @@ description: >
         <li>{{ code7 }}</li>
     </ul>
 generator: generate.py
-daemon: server/start_server.sh
+daemon: app/start_server.sh
 daemon_socket: "dreamteam.sock"
