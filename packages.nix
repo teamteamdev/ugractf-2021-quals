@@ -16,6 +16,7 @@
     aiohttp-jinja2
     aiohttp-session
     gunicorn
+    cryptography
     numpy
   ];
 }

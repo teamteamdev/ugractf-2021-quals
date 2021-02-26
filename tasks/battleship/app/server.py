@@ -97,7 +97,7 @@ def build_app():
     routes = web.RouteTableDef()
 
 
-    @routes.get('/{token}')
+    @routes.get('/{token}/')
     async def main(request):
         return jinja2.render_template(f'game.html', request, {})
 
