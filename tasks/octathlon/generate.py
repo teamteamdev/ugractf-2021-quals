@@ -33,7 +33,6 @@ def generate():
     with open(image_tmp, "rb") as f:
         image_data = f.read()
 
-    print(flag)
     encoded_flag = base64.b32encode(flag.encode("utf-8")).decode("utf-8")
     for i, file in enumerate(glob.glob(os.path.join(image_files, "*"))):
         name, ext = os.path.splitext(os.path.basename(file))
@@ -43,7 +42,7 @@ def generate():
         if len(part_name) != 8:
             raise RuntimeError("Invalid encoded string size")
         fname = "{}.{:03d}".format(part_name[:8], i)
-        print(f"Writing part of flag {part_name}, remaining {encoded_flag}, replacing {short_name} with {fname}")
+        # print(f"Writing part of flag {part_name}, remaining {encoded_flag}, replacing {short_name} with {fname}")
         image_data = image_data.replace(short_name.encode("utf-8"), fname.encode("utf-8"))
     if len(encoded_flag) != 0:
         raise RuntimeError("Invalid encoded string size")
