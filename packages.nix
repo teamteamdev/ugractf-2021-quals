@@ -3,6 +3,8 @@
     coreutils
     bash
     gnused
+    inkscape
+    xorg.xorgserver
   ];
 
   pythonPackages = self: with self; [
