@@ -1,8 +1,9 @@
 category:   "web"
 name:       "Nothing to see"
-points:     100
+points:     50
 author:     "javach"
 description: >
   <p>Нечего там смотреть.</p>
 generator: generate.py
-daemon: app/server.js
+daemon: app/start_server.sh
+daemon_socket: 'nothingtosee.sock'

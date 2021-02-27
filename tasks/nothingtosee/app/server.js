@@ -67,6 +67,7 @@ const httpOptions = {
     ...generateDefaultCert()
 }
 
+const socket = path.join(STATE_DIR, 'nothingtosee.sock')
 const server = https.createServer(httpOptions, (req, res) => {
     res.end('Nothing to see here. Move along.')
-}).listen(31337)
+}).listen(socket)
