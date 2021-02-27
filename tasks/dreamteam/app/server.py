@@ -64,7 +64,7 @@ def build_app():
             resp = web.StreamResponse()
             resp.headers["Content-type"] = "image/jpeg"
             await resp.prepare(request)
-            await resp.write(HEIC_DATA)
+            await resp.write(JPEG_DATA)
             return resp
         else:
             raise web.NotFoundError
