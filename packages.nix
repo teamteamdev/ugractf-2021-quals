@@ -12,6 +12,7 @@
     git
     gnugrep
     zip
+    socat
   ];
 
   pythonPackages = self: with self; [
