@@ -66,7 +66,6 @@ def generate():
     prefix, suffix = encode_flag(flag)
 
     data = open(os.path.join("private", "round.exe"), "rb").read()
-    #print(SUFFIX_SIZE, len(flag), len(prefix), len(suffix))
     data = replace_placeholder(data, b"PREFIX", prefix)
     data = replace_placeholder(data, b"SUFFIX", suffix)
     with ZipFile(os.path.join(target_dir, "round.zip"), "w", zipfile.ZIP_DEFLATED) as out:
@@ -74,7 +73,6 @@ def generate():
             for file in files:
                 path = os.path.normpath(os.path.join(root, file))
                 arcpath = os.path.relpath(path, "private")
-                print(path, arcpath)
                 if arcpath == "round.exe":
                     with out.open("round.exe", "w") as f:
                         f.write(data)
