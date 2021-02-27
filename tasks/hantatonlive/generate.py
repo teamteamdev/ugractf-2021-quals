@@ -33,7 +33,7 @@ def generate():
     json.dump({
         "flags": [flag],
         "substitutions": {},
-        "urls": [f"https://hantaonlive.{{hostname}}/{token}"]
+        "urls": [f"https://hantatonlive.{{hostname}}/{token}"]
     }, sys.stdout)
 
 
