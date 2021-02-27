@@ -8,6 +8,4 @@ description: >
     <p>Поможете разобраться? Вдруг там что-то важное!</p>
 generator: generate.py
 daemon: server.py
-daemon_socket: soviet.sock
-daemon_socket_type: tcp
-daemon_socket_out_port: 17792
+isolate_net: false
