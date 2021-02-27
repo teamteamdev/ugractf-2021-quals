@@ -8,7 +8,7 @@ import random
 import sys
 
 PREFIX = "ugra_come_for_tasks_stay_for_"
-SECRET1 = "giGkgTodpaZofVLdmnfROfohjrioddGFG89r4jO"
+SECRET1 = b"giGkgTodpaZofVLdmnfROfohjrioddGFG89r4jO"
 SALT1_SIZE = 16
 SECRET2 = b"GfkGCGfrk5l6S521koyfjR24fkFsdufgEndEFlfPvFwJR"
 SALT2_SIZE = 12
