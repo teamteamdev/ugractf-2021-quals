@@ -93,9 +93,7 @@ def build_app():
                 'suffix': get_suffix(token)
             })            
         
-        return jinja2.render_template(f'index.html', request, {
-            'error': is_in
-        })
+        return jinja2.render_template(f'index.html', request, {})
 
 
     @routes.post('/{token}')
