@@ -26,14 +26,12 @@ def add_noise(code):
         y = random.randint(0, size - 1)
 
         if (y < 15 and (x < 15 or x >= size - 11) or
-            y >= size - 15 and (x < 15 or x >= size - 15)):
+                y >= size - 15 and (x < 15 or x >= size - 15)):
             continue
 
         code[x][y] = '1' if code[x][y] == '0' else '0'
 
     return code
-
-
 
 
 def verify_token(token):
@@ -135,7 +133,7 @@ async def run_server(loop):
             log(f'Accepted a connection from {origin}', client)
             loop.create_task(handle_client(loop, client))
     finally:
-        log(f'Stopping server gracefully')
+        log('Stopping server gracefully')
         server.close()
 
 

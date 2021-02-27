@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <title>ICM</title>
+
+        <link rel="stylesheet" href="/static/icm.css" />
+    </head>
+    <body>
+        <div>
+        <h1>ICM 2022</h1>
+        <p>Please fill all fields.</p>
+        {% if errors %}
+        <ul class="error">
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="post">
+        <p>First name</p>
+        <p><input type="text" placeholder="Ivan" name="first_name" value="{{ first_name }}" required/></p>
+        <p>Last name</p>
+        <p><input type="text" placeholder="Ivanov" name="last_name" value="{{ last_name }}" required/></p>
+        <p>Desired username</p>
+        <p><input type="text" placeholder="user" name="login" value="{{ login }}" required/></p>
+        <p>PIN-code (4 digits long)</p>
+        <div class="error pin-error"></div>
+        <p><input type="text" placeholder="1234" name="pin" value="{{ pin }}" required/></p>
+        <button>Send</button>
+        </form>
+        </div>
+        <img src="/static/spb.jpg" />
+        <script src="/static/pin.js"></script>
+    </body>
+</html>
