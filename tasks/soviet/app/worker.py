@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-import io
 import itertools
 import hmac
-import os
-import pyqrcode
 import random
-import socket
 import sys
+
+import pyqrcode
 
 sys.stdout.reconfigure(encoding='cp866')
 
