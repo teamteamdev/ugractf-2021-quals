@@ -10,6 +10,8 @@
     python3.pkgs.gunicorn
     ffmpeg
     git
+    gnugrep
+    zip
   ];
 
   pythonPackages = self: with self; [
