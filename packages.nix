@@ -17,6 +17,7 @@
     aiohttp
     aiohttp-jinja2
     aiohttp-session
+    aiosqlite
     gunicorn
     cryptography
     numpy
