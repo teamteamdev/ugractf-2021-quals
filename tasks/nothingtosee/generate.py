@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import hmac
 import sys
 import json
