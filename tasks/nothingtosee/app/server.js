@@ -2,7 +2,7 @@
 
 const https = require('https');
 const crypto = require('crypto');
-const forge = require('node-forge').pki;
+const forge = require('node-forge');
 const fs = require('fs');
 const path = require('path');
 const tls = require('tls');
@@ -29,13 +29,15 @@ const verifyToken = (token) => {
                           .update(Buffer.from(realPart))
                          .digest('hex')
                          .slice(0, TOKEN_SALT_SIZE);
+    console.log(realPart);
+    console.log(hashedPart, expectedHash);
     return hashedPart == expectedHash;
 }
 
 
 const generateCert = (token) => {
-    const rootKey = forge.privateKeyFromPem(ROOT_KEY);
-    const rootCert = forge.certificateFromPem(ROOT_CERT);
+    const rootKey = forge.pki.privateKeyFromPem(ROOT_KEY);
+    const rootCert = forge.pki.certificateFromPem(ROOT_CERT);
 
     const certPath = path.join(STATE_DIR, `${token}.crt`);
     const keyPath = path.join(STATE_DIR, `${token}.key`);
@@ -43,8 +45,8 @@ const generateCert = (token) => {
     if (fs.existsSync(certPath) && fs.existsSync(keyPath))
         return { key: fs.readFileSync(keyPath), cert: fs.readFileSync(certPath) };
 
-    const keys = forge.rsa.generateKeyPair(2048);
-    const cert = forge.createCertificate();
+    const keys = forge.pki.rsa.generateKeyPair(2048);
+    const cert = forge.pki.createCertificate();
     cert.publicKey = keys.publicKey;
     cert.validity.notBefore = new Date();
     cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1);
@@ -76,16 +78,16 @@ const generateCert = (token) => {
         {name: 'extKeyUsage', serverAuth: true},
         {name: 'nsCertType', server: true, sslCA: true, objsign: true, objCA: true},
         {name: 'subjectAltName', altNames: [{
-            type: 6,
+            type: 2,
             value: token === 'default' ? `localhost` : `${token}.${DOMAIN}`
         }]},
         {name: 'subjectKeyIdentifier'}
     ]);
     
-    cert.sign(rootKey);
+    cert.sign(rootKey, forge.md.sha512.create());
 
-    const certPem = forge.certificateToPem(cert);
-    const keyPem = forge.privateKeyToPem(keys.privateKey);
+    const certPem = forge.pki.certificateToPem(cert);
+    const keyPem = forge.pki.privateKeyToPem(keys.privateKey);
 
     fs.writeFileSync(certPath, certPem + '\n' + ROOT_CERT);
     fs.writeFileSync(keyPath, keyPem);
@@ -118,4 +120,4 @@ https.createServer({
     ...secureOptions
 }, (_, res) => {
     res.end('Nothing to see here. Move along.')
-}).listen(9443);
+}).listen(process.env['PORT'] || 443);

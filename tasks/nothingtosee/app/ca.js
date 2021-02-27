@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 const crypto = require('crypto');
-const forge = require('node-forge').pki;
+const forge = require('node-forge');
 const fs = require('fs');
 const path = require('path');
 
 const keys = forge.rsa.generateKeyPair(2048);
-const cert = forge.createCertificate();
+const cert = forge.pki.createCertificate();
 cert.publicKey = keys.publicKey;
 cert.validity.notBefore = new Date('2021-02-26T08:37:00Z');
 cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 10);
@@ -27,10 +27,10 @@ cert.setExtensions([
     {name: 'extKeyUsage', serverAuth: true},
     {name: 'nsCertType', server: true, sslCA: true}
 ])
-cert.sign(keys.privateKey);
+cert.sign(keys.privateKey, forge.md.sha512.create());
 
-const certPem = forge.certificateToPem(cert);
-const keyPem = forge.privateKeyToPem(keys.privateKey);
+const certPem = forge.pki.certificateToPem(cert);
+const keyPem = forge.pki.privateKeyToPem(keys.privateKey);
 
 fs.writeFileSync('root.key', keyPem);
 fs.writeFileSync('root.crt', certPem);
