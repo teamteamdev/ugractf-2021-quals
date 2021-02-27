@@ -106,24 +106,9 @@ async def handle_client(loop, client):
 
 
 async def run_server(loop):
-    if 'LOCAL' in os.environ:
-        if len(sys.argv) < 2:
-            port = 7777
-        else:
-            port = int(sys.argv[1])
-        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server.bind(('0.0.0.0', port))
-        log(f'Server started on 0.0.0.0:{port}')
-    else:
-        server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-
-        if len(sys.argv) < 2:
-            print('Usage: server.py pathto.sock')
-            sys.exit(1)
-
-        path = os.path.join(sys.argv[1], 'soviet.sock')
-        log(f'Starting server on {path}')
-        server.bind(path)
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(('0.0.0.0', 17792))
+    log(f'Server started on 0.0.0.0:17792')
     server.listen(8)
     server.setblocking(False)
 
