@@ -5,3 +5,5 @@ author:   vanyaklimenko
 description: |
     <p>Читателям нашего курса очень понравилась музыка, которая его сопровождала. Так уж и быть, мы опубликовали секретную разработку, которая позволила нам её написать. Только никому! Мы проверим.</p>
 generator: generate.py
+daemon: app/server.py
+daemon_socket: "hantatonlive.sock"
