@@ -8,4 +8,4 @@ description: >
     <p>Поможете разобраться? Вдруг там что-то важное!</p>
 generator: generate.py
 daemon: server.py
-isolate_net: false
+daemon_isolate_net: false
