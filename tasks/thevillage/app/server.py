@@ -29,7 +29,7 @@ from PIL import Image
 BASE_DIR = os.path.dirname(__file__)
 
 PREFIX = "ugra_come_for_tasks_stay_for_"
-SECRET2 = b"playmate-nibble-slobbery-nastily-retrace"
+SECRET2 = b"GfkGCGfrk5l6S521koyfjR24fkFsdufgEndEFlfPvFwJR"
 COOKIE_SECRET = b"bG9va2tlZWtvbWFhYWFnYWZqZmpma2ZrZmthYWFhZAo="
 SALT1_SIZE = 16
 SALT2_SIZE = 16
