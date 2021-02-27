@@ -5,5 +5,3 @@ author:     "javach"
 description: >
   <p>Нечего там смотреть.</p>
 generator: generate.py
-daemon: app/start_server.sh
-daemon_socket: 'nothingtosee.sock'
