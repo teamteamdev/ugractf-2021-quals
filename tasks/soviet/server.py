@@ -131,8 +131,8 @@ async def run_server(loop):
 
     try:
         while True:
-            client, (host, port) = await loop.sock_accept(server)
-            log(f'Accepted a connection from {host}:{port}', client)
+            client, origin = await loop.sock_accept(server)
+            log(f'Accepted a connection from {origin}', client)
             loop.create_task(handle_client(loop, client))
     finally:
         log(f'Stopping server gracefully')
