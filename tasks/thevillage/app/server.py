@@ -27,6 +27,7 @@ from pyzbar.pyzbar import decode
 from PIL import Image
 
 BASE_DIR = os.path.dirname(__file__)
+STATE_DIR = sys.argv[1] if len(sys.argv) >= 2 else BASE_DIR
 
 PREFIX = "ugra_come_for_tasks_stay_for_"
 SECRET2 = b"GfkGCGfrk5l6S521koyfjR24fkFsdufgEndEFlfPvFwJR"
