@@ -124,8 +124,8 @@ async def run_server(loop):
             sys.exit(1)
 
         path = os.path.join(sys.argv[1], 'soviet.sock')
+        log(f'Starting server on {path}')
         server.bind(path)
-        log(f'Server started on {path}')
     server.listen(8)
     server.setblocking(False)
 
