@@ -10,13 +10,12 @@ in {
   networking.firewall = {
     allowedTCPPorts = [
       17792
-      44100
     ];
   };
 
   services.icecast = {
     enable = true;
-    hostname = "thevillage.q.2020.ugractf.ru";
+    hostname = "dj.ugractf.ru";
     listen = {
       port = icecastPort;
     };
@@ -29,6 +28,12 @@ in {
         <source-password>${icecastPassword}</source-password>
       </authentication>
     '';
+  };
+
+  services.nginx.virtualHosts."dj.ugractf.ru" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/".proxyPass = "http://127.0.0.1:${toString icecastPort}";
   };
 
   systemd.services.best-edm-songs = {
