@@ -19,5 +19,6 @@
     gunicorn
     cryptography
     numpy
+    pyqrcode
   ];
 }

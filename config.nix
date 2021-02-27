@@ -5,6 +5,7 @@ with lib;
 {
   networking.firewall = {
     allowedTCPPorts = [
+      17792
     ];
   };
 }
