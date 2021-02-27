@@ -119,6 +119,13 @@ const randomizeGrid = () => {
     });
 }
 
+const download = () => {
+    url = document.URL;
+    url = url.slice(-1) === '/' ? url : url + '/';
+    url += 'wav?grid=' + serializeGrid(exportGrid());
+    document.location.href = url;
+}
+
 document.onload = initialize();
 
 // info panel

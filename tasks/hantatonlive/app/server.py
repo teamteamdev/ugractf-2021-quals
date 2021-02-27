@@ -11,36 +11,104 @@ import math
 import hmac
 import json
 import os
+import io
 import sys
 from datetime import datetime, timezone
 from typing import Optional, Generator, Iterable
 from jinja2 import FileSystemLoader
+import base64
+from pydub import AudioSegment
 
 BASE_DIR = os.path.dirname(__file__)
 STATE_DIR = sys.argv[1] if len(sys.argv) >= 2 else BASE_DIR
 DATABASE = os.path.join(STATE_DIR, "db.sqlite3")
 
-PREFIX = "ugra_gotta_hit_fast_"
-SECRET2 = b"aRUpGrnZ3XkYgfzZ"
+PREFIX = "ugra_everything_is_a_remix_even_"
+SECRET2 = b"playmate-nibble-slobbery-nastily-retrace"
 COOKIE_SECRET = b"KC0gBmM0LzIntvY1dHSTPxJ10nPW9MdNffHEf1YDdDY="
 SALT1_SIZE = 16
 SALT2_SIZE = 16
+
+BAR = 667
+
+SAMPLES = [
+    '2kicks_1.mp3',
+    'bass_a_1.mp3',
+    'bass_b_1.mp3',
+    'bass_d_1.mp3',
+    'bass_f_1.mp3',
+    'chord_a_1.mp3',
+    'chord_b_1.mp3',
+    'chord_d_1.mp3',
+    'chord_f_1.mp3',
+    'hats_1.mp3',
+    'hats_fast_1.mp3',
+    'kick_1.mp3',
+    'kick_and_snare_1.mp3',
+    'single_hat_1.mp3',
+    'snare_1.mp3',
+    'snare_fill_1.mp3'
+]
+SAMPLES_DIR = os.path.join('static', 'samples')
+samples = None
+
 
 def get_flag(token):
     return PREFIX + hmac.new(SECRET2, token.encode(), 'sha256').hexdigest()[:SALT2_SIZE]
 
 
+def load_sample(filename):
+    return AudioSegment.from_mp3(os.path.join(SAMPLES_DIR, filename))
+
+
+def render(grid):
+    global samples
+    grid_audio = AudioSegment.silent(duration=1)
+    for bar in grid:
+        bar = bar
+        bar_audio = AudioSegment.silent(duration=BAR)
+        if bar != ['']:
+            for sample in bar:
+                bar_audio = bar_audio.overlay(samples[int(sample)])
+            grid_audio += bar_audio
+    return grid_audio
+
+
 def build_app():
+    global samples
     app = web.Application()
     routes = web.RouteTableDef()
 
+    print("Loading samples...")
+    samples = map(load_sample, SAMPLES)
+    samples = list(samples)
 
     @routes.get('/{token}')
     async def main(request):
         return jinja2.render_template(f'game.html', request, {})
 
+    @routes.get('/{token}/wav')
+    async def generate(request):
+        token = request.match_info['token']
+
+        grid_b64 = request.query['grid']
+        grid = base64.b64decode(grid_b64).decode('ascii')
+        grid = [x.split(',') for x in grid.split(';')]
+
+        audio = render(grid)
+        buffer = io.BytesIO()
+        audio.export(buffer, format='wav')
+
+        resp = web.StreamResponse()
+        resp.headers["Content-type"] = "audio/wave"
+        resp.headers["Content-disposition"] = "inline; filename=bounce.wav"
+        await resp.prepare(request)
+        await resp.write(buffer.getvalue())
+        return resp
+
+
     routes.static('/static', 'static')
-    
+
     app.add_routes(routes)
     jinja2.setup(
         app,
@@ -57,7 +125,7 @@ def start():
     if os.environ.get('DEBUG') == 'F':
         web.run_app(app, host='0.0.0.0', port=31337)
     else:
-        web.run_app(app, path=os.path.join(STATE_DIR, 'best-edm.sock'))
+        web.run_app(app, path=os.path.join(STATE_DIR, '.sock'))
 
 
 if __name__ == '__main__':
