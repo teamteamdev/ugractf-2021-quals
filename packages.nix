@@ -27,6 +27,7 @@
     cryptography
     numpy
     pyqrcode
+    pyzbar
     pydub
   ];
 }
