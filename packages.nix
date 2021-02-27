@@ -8,6 +8,7 @@
     bubblewrap
     xorg.xorgserver
     python3.pkgs.gunicorn
+    ffmpeg
   ];
 
   pythonPackages = self: with self; [
@@ -20,5 +21,6 @@
     cryptography
     numpy
     pyqrcode
+    pydub
   ];
 }
