@@ -5,6 +5,9 @@ import json
 import hashlib
 import os
 import sys
+import shutil
+import zipfile
+from zipfile import ZipFile
 
 PREFIX = "ugra_look_around_"
 SECRET = b"2mZ3nGKCdz5aLKqc"
@@ -66,7 +69,17 @@ def generate():
     #print(SUFFIX_SIZE, len(flag), len(prefix), len(suffix))
     data = replace_placeholder(data, b"PREFIX", prefix)
     data = replace_placeholder(data, b"SUFFIX", suffix)
-    open(os.path.join(target_dir, "round.exe"), "wb").write(data)
+    with ZipFile(os.path.join(target_dir, "round.zip"), "w", zipfile.ZIP_DEFLATED) as out:
+        for root, dirs, files in os.walk("private"):
+            for file in files:
+                path = os.path.normpath(os.path.join(root, file))
+                arcpath = os.path.relpath(path, "private")
+                print(path, arcpath)
+                if arcpath == "round.exe":
+                    with out.open("round.exe", "w") as f:
+                        f.write(data)
+                else:
+                    out.write(path, arcpath)
 
     decoded_suffix = flag[PREFIX_SIZE:PREFIX_SIZE + SUFFIX_SIZE]
     for i in range(CRYPTO_ROUNDS):
