@@ -4,6 +4,8 @@
 
 import aiohttp.web as web
 import aiohttp_jinja2 as jinja2
+import array
+import numpy as np
 import base64
 import asyncio
 import base64
@@ -61,6 +63,30 @@ def load_sample(filename):
     return AudioSegment.from_mp3(os.path.join(SAMPLES_DIR, filename))
 
 
+def stego(audio, token):
+    bit = 6
+    flag = ''.join(["{0:08b}".format(x) for x in get_flag(token).encode('ascii')])
+    flag = list(map(int, flag))
+    arr = np.array(audio.get_array_of_samples()).T.astype(np.int16)
+    
+    mask = np.zeros((len(arr), ), dtype=np.int16)
+    mask[::len(arr)//len(flag)+1] = 1
+
+    equalizer = np.where(
+        mask > 0,
+        (1 << bit - 1),
+        0
+    ).astype(np.int16)
+    
+    flagolizer = np.copy(mask)
+    flagolizer[::len(arr)//len(flag)+1] = np.array(flag, dtype=np.int16) << (bit-1)
+
+    arr = arr & ~equalizer ^ flagolizer
+    arr = array.array(audio.array_type, arr)
+    new_audio = audio._spawn(arr)
+    return new_audio
+
+
 def render(grid):
     global samples
     grid_audio = AudioSegment.silent(duration=1)
@@ -96,6 +122,7 @@ def build_app():
         grid = [x.split(',') for x in grid.split(';')]
 
         audio = render(grid)
+        audio = stego(audio, token)
         buffer = io.BytesIO()
         audio.export(buffer, format='wav')
 
