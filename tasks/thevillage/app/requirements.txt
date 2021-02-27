@@ -1,0 +1,6 @@
+aiohttp
+aiohttp_session
+aiohttp_jinja2
+jinja2
+pyzbar
+cryptography

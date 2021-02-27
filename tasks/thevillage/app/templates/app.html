@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>СЕЛЬСКИЙ КЛУБ in da HOUSE</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="center">
+        <div>
+          <h1>🚻 Основная комната (2 чел.)</h1>
+          <p><b>Тема беседы:</b><br>простая беседа! веселимся! наслаждаемся!<br>задаём вопросы!! для спициалистов: {{ suffix }}</p>
+          <button onclick="start(this)"><large>Прийти послушать</large></button>
+          <p l class="err">Вы проверку не прошли. Вам говорить пока нечего.<br><b><large>Вы будете молчать семь дней.</large></b></p>
+        </div>
+        </div>
+      </div>
+      <div class="center toblur">
+        <div>
+          <img class="logo" src="/static/logo.svg">
+          <h1>🚻 Основная комната (3 чел.)</h1>
+          <div class="users">
+            <div class="user">
+              <img src="/static/1.png">
+              <h3>Анатоль</h3>
+              <p>Бизнесмен 💶💷💴. Аналитик 📉📈. Машина в 24 🚗, автомобиль в 32 🏎. Программист 🤴 и SEO-БОГ 💸💸💸</p>
+            </div>
+            <div class="user">
+              <img src="/static/2.png">
+              <h3>Руся</h3>
+              <p>простая девочка. просто люблю поговорить в коналах. люблю сплетничать и говорить секретики:^)))</p>
+            </div>
+          </div>
+          <div class="users">
+            <div class="user">
+              <img src="/static/3.png">
+              <h3>Ты 🤳🏻</h3>
+              <p class="err">(недостоин описания!)</p>
+              <p class="err">(недостоин майкрофонить!)</p>
+            </div>
+          </div>
+          <p><b>Тема беседы:</b><br>простая беседа! веселимся! наслаждаемся!<br>задаём вопросы!! для спициалистов: {{ suffix }}</p>
+          <audio>
+            <source src="http://thevillage.q.2020.ugractf.ru:44100/thevillage.mp3" type="audio/mpeg">
+          </audio>
+
+          <script>
+            const start = e => {
+                document.querySelector('.overlay').style.display = 'none';
+                document.querySelector('.toblur').classList.toggle('toblur');
+                document.querySelector('audio').play();
+            }
+          </script>
+        </div>
+      </div>
+    </body>
+</html>
