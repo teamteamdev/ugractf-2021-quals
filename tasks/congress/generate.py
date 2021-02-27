@@ -35,7 +35,7 @@ def generate():
         "flags": [get_flag(token)],
         "substitutions": {},
         "urls": [
-            f"https://congress.{{{{ hostname }}}}/?ref={token}"
+            f"https://congress.{{ hostname }}/?ref={token}"
         ]
     }, sys.stdout)
 
