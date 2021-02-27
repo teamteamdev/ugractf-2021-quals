@@ -9,6 +9,7 @@
     xorg.xorgserver
     python3.pkgs.gunicorn
     ffmpeg
+    git
   ];
 
   pythonPackages = self: with self; [
