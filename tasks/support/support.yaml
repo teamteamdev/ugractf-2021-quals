@@ -1,0 +1,13 @@
+category:    "misc"
+name:        "База знаний"
+points:      250
+author:      "nsychev"
+description: >
+    <p>Для оперативного решения проблем клиентов международной платёжной системы UgraPay был открыт Департамент клиентской поддержки с представительством в платформе для обмена сообщениями Telegram.</p>
+    <p>Правда, сотрудников в него так и не наняли…</p>
+generator: generate.py
+daemon: app/server.py
+daemon_socket: support.sock
+daemon_isolate_net: false
+daemon_passthru_dirs:
+  - /etc/resolv.conf
