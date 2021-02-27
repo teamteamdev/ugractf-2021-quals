@@ -18,6 +18,7 @@
   pythonPackages = self: with self; [
     flask
     uvloop
+    aiogram
     aiohttp
     aiohttp-jinja2
     aiohttp-session
