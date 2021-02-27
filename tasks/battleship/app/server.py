@@ -30,7 +30,7 @@ DATABASE = os.path.join(STATE_DIR, "db.sqlite3")
 PREFIX = "ugra_gotta_hit_fast_"
 SECRET2 = b"aRUpGrnZ3XkYgfzZ"
 COOKIE_SECRET = b"KC0gBmM0LzIntvY1dHSTPxJ10nPW9MdNffHEf1YDdDY="
-SALT1_SIZE = 16
+SALT2_SIZE = 12
 
 MAX_GAME_TIME = 30
 GAME_FPS = 1
@@ -38,7 +38,7 @@ GAME_DT = 1 / GAME_FPS
 SHIP_SPEED = 100
 FIELD_FROM = np.array([-200, -200])
 FIELD_TO = np.array([200, 200])
-ROCKET_SIZE = np.array([500, 500])
+ROCKET_SIZE = np.array([1, 1])
 GAME_TRIES = 6
 
 def get_flag(token):
