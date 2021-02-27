@@ -27,10 +27,8 @@ const verifyToken = (token) => {
     const expectedHash = crypto
                           .createHmac('sha256', TOKEN_SECRET)
                           .update(Buffer.from(realPart))
-                         .digest('hex')
-                         .slice(0, TOKEN_SALT_SIZE);
-    console.log(realPart);
-    console.log(hashedPart, expectedHash);
+                          .digest('hex')
+                          .slice(0, TOKEN_SALT_SIZE);
     return hashedPart == expectedHash;
 }
 
@@ -52,36 +50,31 @@ const generateCert = (token) => {
     cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1);
     cert.serialNumber = Math.floor(Math.random() * 281474976711000).toString(16).padStart(14, '0');
     const attrs = [
-        {shortName: 'C', value: 'RU'},
-        {shortName: 'ST', value: 'Ugra'},
-        {shortName: 'L', value: 'Khanty-Mansiysk'},
-        {shortName: 'O', value: '[team Team]'},
-        {shortName: 'OU', value: 'NOC'},
         {shortName: 'CN', value: token === 'default' ? `localhost` : `${token}.${DOMAIN}`}
     ];
     cert.setSubject(attrs);
     cert.setIssuer(rootCert.issuer.attributes);
-    if (token !== 'default') {
-        const flag = PREFIX + crypto
-                               .createHmac('sha256', FLAG_SECRET)
-                               .update(Buffer.from(token))
-                               .digest('hex')
-                               .slice(0, FLAG_SALT_SIZE);
-        cert.setExtensions([
-            {name: 'nsComment', comment: flag}
-        ]);
-    }
+
+    const flag = token === 'default' ? '.' : PREFIX + crypto
+                                                     .createHmac('sha256', FLAG_SECRET)
+                                                     .update(Buffer.from(token))
+                                                     .digest('hex')
+                                                     .slice(0, FLAG_SALT_SIZE);
 
     cert.setExtensions([
         {name: 'basicConstraints', cA: false},
         {name: 'keyUsage', digitalSignature: true, keyEncipherment: true, dataEncipherment: true},
         {name: 'extKeyUsage', serverAuth: true},
-        {name: 'nsCertType', server: true, sslCA: true, objsign: true, objCA: true},
+        {name: 'nsComment', comment: flag},
+        {name: 'nsCertType', server: true, objsign: true},
         {name: 'subjectAltName', altNames: [{
             type: 2,
             value: token === 'default' ? `localhost` : `${token}.${DOMAIN}`
         }]},
-        {name: 'subjectKeyIdentifier'}
+        {
+            name: 'authorityKeyIdentifier',
+            serialNumber: rootCert.serialNumber
+        }
     ]);
     
     cert.sign(rootKey, forge.md.sha512.create());

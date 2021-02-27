@@ -9,23 +9,25 @@ const keys = forge.rsa.generateKeyPair(2048);
 const cert = forge.pki.createCertificate();
 cert.publicKey = keys.publicKey;
 cert.validity.notBefore = new Date('2021-02-26T08:37:00Z');
-cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 10);
-cert.serialNumber = Math.floor(Math.random() * 281474976711000).toString(16).padStart(14, '0');
+cert.validity.notAfter = new Date(cert.validity.notBefore);
+cert.validity.notAfter.setFullYear(cert.validity.notAfter.getFullYear() + 10);
+cert.serialNumber = '03133700031337000313370003133701'
 const attrs = [
     {shortName: 'C', value: 'RU'},
     {shortName: 'ST', value: 'Ugra'},
     {shortName: 'L', value: 'Khanty-Mansiysk'},
-    {shortName: 'O', value: '[team Team]'},
+    {shortName: 'O', value: 'team Team'},
     {shortName: 'OU', value: 'NOC'},
-    {shortName: 'CN', value: '[team Team] Certificate Authority'}
+    {shortName: 'CN', value: 'team Team Ugra Branch CA'}
 ];
 cert.setSubject(attrs);
 cert.setIssuer(attrs);
 cert.setExtensions([
-    {name: 'basicConstraints', cA: true},
-    {name: 'keyUsage', keyCertSign: true, keyEncipherment: true},
+    {name: 'basicConstraints', cA: true, critical: true},
+    {name: 'keyUsage', keyCertSign: true, keyEncipherment: true, cRLSign: true},
     {name: 'extKeyUsage', serverAuth: true},
-    {name: 'nsCertType', server: true, sslCA: true}
+    {name: 'nsCertType', server: true, sslCA: true},
+    {name: 'subjectKeyIdentifier'}
 ])
 cert.sign(keys.privateKey, forge.md.sha512.create());
 
