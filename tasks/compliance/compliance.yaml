@@ -7,3 +7,4 @@ description: >
 generator:   generate.py
 daemon: app/start_server.sh
 daemon_socket: "compliance.sock"
+daemon_isolate: false
