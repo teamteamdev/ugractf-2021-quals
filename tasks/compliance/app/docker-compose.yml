@@ -22,6 +22,9 @@ services:
     restart: always
     build:
       context: ./nginx
+    links:
+      - "php7:php7"
+      - "php8:php8"
     volumes:
       - "./www:/www"
       - "./nginx/nginx.conf:/nginx.conf"
