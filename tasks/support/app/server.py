@@ -202,27 +202,30 @@ def build_bot(app):
             )
 
         results = []
-        async with get_database_connection(user_id) as db:
-            async with db.execute('SELECT * FROM questions WHERE question LIKE \'%' + inline_query.query + '%\' LIMIT 50') as cursor:
-                async for row in cursor:
-                    if len(results) == 50:
-                        break
+        try:
+            async with get_database_connection(user_id) as db:
+                async with db.execute('SELECT * FROM questions WHERE question LIKE \'%' + inline_query.query + '%\' LIMIT 50') as cursor:
+                    async for row in cursor:
+                        if len(results) == 50:
+                            break
 
-                    results.append(aiogram.types.InlineQueryResultArticle(
-                        id=f'{user_id}-{row[0]}',
-                        title=row[1],
-                        input_message_content=aiogram.types.InputTextMessageContent(
-                            f'\u2753 *{row[1]}*\n\n\U0001F4AC {row[2]}',
-                            parse_mode='Markdown'
-                        ),
-                        reply_markup=aiogram.types.InlineKeyboardMarkup(inline_keyboard=[[
-                            aiogram.types.InlineKeyboardButton(
-                                text='\U0001F44D Спасибо!',
-                                callback_data='like'
-                            )
-                        ]]),
-                        description=truncate(row[2])
-                    ))
+                        results.append(aiogram.types.InlineQueryResultArticle(
+                            id=f'{user_id}-{row[0]}',
+                            title=row[1],
+                            input_message_content=aiogram.types.InputTextMessageContent(
+                                f'\u2753 *{row[1]}*\n\n\U0001F4AC {row[2]}',
+                                parse_mode='Markdown'
+                            ),
+                            reply_markup=aiogram.types.InlineKeyboardMarkup(inline_keyboard=[[
+                                aiogram.types.InlineKeyboardButton(
+                                    text='\U0001F44D Спасибо!',
+                                    callback_data='like'
+                                )
+                            ]]),
+                            description=truncate(row[2])
+                        ))
+        except aiosqlite.OperationalError:
+            pass
 
         return AnswerInlineQuery(
             inline_query.id,
@@ -255,12 +258,15 @@ def build_bot(app):
 
             questions = await get_page(user_id, page)
 
-            await bot.edit_message_text(
-                'Выберите интересующий вас вопрос:',
-                user_id,
-                callback_query.message.message_id,
-                reply_markup=questions
-            )
+            try:
+                await bot.edit_message_text(
+                    'Выберите интересующий вас вопрос:',
+                    user_id,
+                    callback_query.message.message_id,
+                    reply_markup=questions
+                )
+            except aiogram.utils.exceptions.MessageNotModified:
+                pass
         else:
             async with get_database_connection(user_id) as db:
                 async with db.execute('SELECT * FROM questions WHERE question LIKE \'' + callback_query.data + '%\' LIMIT 1') as cursor:
