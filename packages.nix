@@ -13,6 +13,7 @@
     gnugrep
     zip
     socat
+    docker
     docker-compose
   ];
 
