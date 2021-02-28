@@ -151,6 +151,10 @@ def truncate(text):
     return text[:40] + "..."
 
 
+def gen_id(row):
+    return hashlib.sha1(''.join(map(str, row)).encode()).hexdigest()
+
+
 def build_bot(app):
     # pylint: disable=unused-variable
 
@@ -204,14 +208,15 @@ def build_bot(app):
         results = []
         try:
             async with get_database_connection(user_id) as db:
-                print(inline_query.query.encode(), flush=True)
+                if "'" in inline_query.query:
+                    print("support: hacking attempt", user_id, inline_query.query.encode(), flush=True)
                 async with db.execute('SELECT * FROM questions WHERE question LIKE \'%' + inline_query.query + '%\' LIMIT 50') as cursor:
                     async for row in cursor:
                         if len(results) == 50:
                             break
 
                         results.append(aiogram.types.InlineQueryResultArticle(
-                            id=f'{user_id}-{row[0]}',
+                            id=f'{user_id}-{gen_id(row)}',
                             title=row[1],
                             input_message_content=aiogram.types.InputTextMessageContent(
                                 f'\u2753 *{row[1]}*\n\n\U0001F4AC {row[2]}',
@@ -281,11 +286,7 @@ def build_bot(app):
                                 [aiogram.types.InlineKeyboardButton(
                                     text='\U0001F44D Спасибо!',
                                     callback_data='like'
-                                )],
-                                # [aiogram.types.InlineKeyboardButton(
-                                #     text='\U0001F501 Поделиться',
-                                #     switch_inline_query=row[1]
-                                # )]
+                                )]
                             ])
                         )
 
