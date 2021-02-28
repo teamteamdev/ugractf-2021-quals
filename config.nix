@@ -37,15 +37,6 @@ in {
     locations."/".proxyPass = "http://127.0.0.1:${toString icecastPort}";
   };
 
-  services.nginx.virtualHosts."onestop.${domain}" = {
-    listen = [ { addr = "127.0.0.1"; port = 17443; ssl = true; } ];
-    onlySSL = true;
-    sslCertificate = "/var/lib/acme/${domain}/cert.pem";
-    sslCertificateKey = "/var/lib/acme/${domain}/key.pem";
-    sslTrustedCertificate = "/var/lib/acme/${domain}/chain.pem";
-    locations."~ ^/[^/]+$".tryFiles = "${./tasks/onestop/app/public}/index.html =404";
-  };
-
   systemd.services.best-edm-songs = {
     wantedBy = [ "multi-user.target" ];
     after = [ "icecast.service" ];
