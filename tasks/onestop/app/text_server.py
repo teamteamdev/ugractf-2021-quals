@@ -35,6 +35,7 @@ async def handle_flag(reader, writer):
     if not verify_token(token):
         writer.write(b'FATAL WRONG')
         await writer.drain()
+        writer.close()
         return
 
     writer.write(get_flag(token).encode())
