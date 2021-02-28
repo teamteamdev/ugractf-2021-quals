@@ -7,15 +7,14 @@ import hmac
 import socket
 
 
-PREFIX = "ugra_soviet_technologies_are_eternal_"
-TOKEN_SECRET = b"fluctuation-constellation-accumulation-architecture-refrigerator"
+PREFIX = "ugra_social_services_for_the_masses_"
+TOKEN_SECRET = b"qpSRnuFNG7bhs4Sk"
 TOKEN_SALT_SIZE = 16
-FLAG_SECRET = b"comfortable-intermediate-battlefield-firefighter-contradiction"
+FLAG_SECRET = b"FX75zyKrr58f9fqq"
 FLAG_SALT_SIZE = 12
 
 
 def verify_token(token):
-    return True
     return hmac.new(
         TOKEN_SECRET,
         token[:-TOKEN_SALT_SIZE].encode(),
