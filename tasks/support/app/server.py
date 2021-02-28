@@ -11,7 +11,7 @@ import aiohttp.web as web
 import aiosqlite
 
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
-from aiogram.dispatcher.webhook import AnswerCallbackQuery, SendMessage
+from aiogram.dispatcher.webhook import AnswerCallbackQuery, AnswerInlineQuery, SendMessage
 
 BASE_DIR = os.path.dirname(__file__)
 STATE_DIR = sys.argv[1] if len(sys.argv) >= 2 else BASE_DIR
@@ -145,6 +145,12 @@ def wrap_if(text, predicate):
         return text
 
 
+def truncate(text):
+    if len(text) < 40:
+        return text
+    return text[:40] + "..."
+
+
 def build_bot(app):
     # pylint: disable=unused-variable
 
@@ -174,6 +180,56 @@ def build_bot(app):
         ])
 
         return keyboard
+
+
+    @dp.inline_handler()
+    async def search(inline_query: aiogram.types.InlineQuery):
+        if not inline_query.query:
+            return AnswerInlineQuery(
+                inline_query.id,
+                []
+            )
+
+        user_id = inline_query.from_user.id
+
+        if not database_exists(user_id):
+            return AnswerInlineQuery(
+                inline_query.id,
+                [],
+                is_personal=True,
+                cache_time=3,
+                switch_pm_text='Авторизуйтесь с персональной ссылкой'
+            )
+
+        results = []
+        async with get_database_connection(user_id) as db:
+            async with db.execute('SELECT * FROM questions WHERE question LIKE \'%' + inline_query.query + '%\' LIMIT 50') as cursor:
+                async for row in cursor:
+                    if len(results) == 50:
+                        break
+
+                    results.append(aiogram.types.InlineQueryResultArticle(
+                        id=f'{user_id}-{row[0]}',
+                        title=row[1],
+                        input_message_content=aiogram.types.InputTextMessageContent(
+                            f'\u2753 *{row[1]}*\n\n\U0001F4AC {row[2]}',
+                            parse_mode='Markdown'
+                        ),
+                        reply_markup=aiogram.types.InlineKeyboardMarkup(inline_keyboard=[[
+                            aiogram.types.InlineKeyboardButton(
+                                text='\U0001F44D Спасибо!',
+                                callback_data='like'
+                            )
+                        ]]),
+                        description=truncate(row[2])
+                    ))
+
+        return AnswerInlineQuery(
+            inline_query.id,
+            results,
+            is_personal=True,
+            cache_time=20
+        )
 
 
     @dp.callback_query_handler()
@@ -210,16 +266,20 @@ def build_bot(app):
                 async with db.execute('SELECT * FROM questions WHERE question LIKE \'' + callback_query.data + '%\' LIMIT 1') as cursor:
                     async for row in cursor:
                         await bot.edit_message_text(
-                            f'\u2753 **{row[1]}**\n\n\U0001F4AC {row[2]}',
+                            f'\u2753 *{row[1]}*\n\n\U0001F4AC {row[2]}',
                             user_id,
                             callback_query.message.message_id,
                             parse_mode='Markdown',
-                            reply_markup=aiogram.types.InlineKeyboardMarkup(inline_keyboard=[[
-                                aiogram.types.InlineKeyboardButton(
+                            reply_markup=aiogram.types.InlineKeyboardMarkup(inline_keyboard=[
+                                [aiogram.types.InlineKeyboardButton(
                                     text='\U0001F44D Спасибо!',
                                     callback_data='like'
-                                )
-                            ]])
+                                )],
+                                # [aiogram.types.InlineKeyboardButton(
+                                #     text='\U0001F501 Поделиться',
+                                #     switch_inline_query=row[1]
+                                # )]
+                            ])
                         )
 
         return AnswerCallbackQuery(callback_query.id)
