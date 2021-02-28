@@ -1,0 +1,10 @@
+category:    "web"
+name:        "Сертификация соответствия"
+points:      150
+author:      "kalan"
+description: >
+    <p>Для того, чтобы дорогой вам бизнес мог работать с новыми партнёрами, они проводят проверку на соответствие их строгим требованиям, для чего собирают важную для них информацию. Вот только вам неохота делиться всем сразу…</p>
+generator:   generate.py
+daemon: app/start_server.sh
+daemon_socket: "compliance.sock"
+daemon_isolate: false

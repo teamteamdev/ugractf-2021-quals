@@ -1,0 +1,31 @@
+version: "3.1"
+services:
+  php7:
+    restart: always
+    build:
+      context: ./php7
+    volumes:
+      - "./php7/nginx.conf:/nginx.conf"
+      - "./www:/www"
+      - "./flag.py:/flag.py"
+      - "${SOCK_PATH}/store:/store"
+  php8:
+    restart: always
+    build:
+      context: ./php8
+    volumes:
+      - "./php8/nginx.conf:/nginx.conf"
+      - "./www:/www"
+      - "./flag.py:/flag.py"
+      - "${SOCK_PATH}/store:/store"
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    links:
+      - "php7:php7"
+      - "php8:php8"
+    volumes:
+      - "./www:/www"
+      - "./nginx/nginx.conf:/nginx.conf"
+      - "${SOCK_PATH}:/sockets"
