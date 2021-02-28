@@ -204,6 +204,7 @@ def build_bot(app):
         results = []
         try:
             async with get_database_connection(user_id) as db:
+                print(inline_query.query.encode(), flush=True)
                 async with db.execute('SELECT * FROM questions WHERE question LIKE \'%' + inline_query.query + '%\' LIMIT 50') as cursor:
                     async for row in cursor:
                         if len(results) == 50:
