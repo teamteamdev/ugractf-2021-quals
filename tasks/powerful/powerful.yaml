@@ -1,0 +1,8 @@
+category: "crypto"
+name:     "Мощный шифр"
+points:   250
+author:   nsychev
+description: |
+    <p>Мощный шифр требует мощного компьютера для расшифрования. Мы уже написали скрипт, но запускать не на чем. Может быть, у вас найдётся подходящий компьютер?</p>
+generator: generate.py
+attachments_path: public/
