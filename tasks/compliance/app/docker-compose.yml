@@ -26,5 +26,3 @@ services:
       - "./www:/www"
       - "./nginx/nginx.conf:/nginx.conf"
       - "${SOCK_PATH}:/sockets"
-    expose:
-      - 7080  # debug
