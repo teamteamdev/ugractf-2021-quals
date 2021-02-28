@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ domain, config, pkgs, lib, ... }:
 
 with lib;
 
@@ -34,6 +34,12 @@ in {
     forceSSL = true;
     enableACME = true;
     locations."/".proxyPass = "http://127.0.0.1:${toString icecastPort}";
+  };
+
+  services.nginx.virtualHosts."oneport.${domain}" = {
+    forceSSL = true;
+    useACMEHost = domain;
+    locations."/".root = ${./tasks/oneport/app/public};
   };
 
   systemd.services.best-edm-songs = {
