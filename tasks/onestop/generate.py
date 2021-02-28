@@ -34,10 +34,10 @@ def generate():
     json.dump({
         "flags": [get_flag(token)],
         "substitutions": {},
-        "urls": [f"https://onestop.{{hostname}}"]
+        "urls": [f"https://onestop.{{hostname}}"],
         "bullets": [
             f"Пароль: <code>{token}</code>"
-        ]
+        ],
     }, sys.stdout)
 
 
