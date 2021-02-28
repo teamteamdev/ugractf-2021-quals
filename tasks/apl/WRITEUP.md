@@ -114,4 +114,4 @@ print(list(map(E, flag)))
 ```
 
 
-Флаг: *ugra_the_next_station_is_esoteric_programming_cf902c2f1b142ce853f9b5bd66dd507d2351e7f56e3f86195e7b919b3e*
+Флаг: **ugra_the_next_station_is_esoteric_programming_cf902c2f1b142ce853f9b5bd66dd507d2351e7f56e3f86195e7b919b3e**
