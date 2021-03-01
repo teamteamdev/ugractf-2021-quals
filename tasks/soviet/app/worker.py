@@ -48,9 +48,9 @@ def get_flag(token):
 
 def main():
     print('PWD?', flush=True)
-    token = input()
+    token = input().strip()
 
-    if not verify_token(token.strip()):
+    if not verify_token(token):
         print('FATAL WRONG', flush=True)
         return
 

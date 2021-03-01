@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 
-import codecs
+import hashlib
 import hmac
 import json
 import os
-import random
+import shutil
+import subprocess
 import sys
+import tempfile
 
-PREFIX = "ugra_everything_is_a_remix_even_"
-SECRET1 = b"repent-shortcut-entangled-defraud-livable"
+PREFIX = "ugra_said_secret_service_secretly_succumbs_"
+SECRET1 = b"Duyaiquaeboop1ye"
 SALT1_SIZE = 16
-SECRET2 = b"playmate-nibble-slobbery-nastily-retrace"
-SALT2_SIZE = 16
+SECRET2 = b"AiKee0Je2shi0que"
+SALT2_SIZE = 12
 
 
 def get_user_tokens():
@@ -33,9 +35,8 @@ def generate():
     json.dump({
         "flags": [flag],
         "substitutions": {},
-        "urls": [f"https://hantatonlive.{{hostname}}/{token}"]
+        "urls": [f"https://compliance.{{hostname}}/{token}/"]
     }, sys.stdout)
-
 
 if __name__ == "__main__":
     generate()

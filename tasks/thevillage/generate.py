@@ -7,11 +7,11 @@ import os
 import random
 import sys
 
-PREFIX = "ugra_everything_is_a_remix_even_"
-SECRET1 = b"repent-shortcut-entangled-defraud-livable"
+PREFIX = "ugra_come_for_tasks_stay_for_"
+SECRET1 = b"giGkgTodpaZofVLdmnfROfohjrioddGFG89r4jO"
 SALT1_SIZE = 16
-SECRET2 = b"playmate-nibble-slobbery-nastily-retrace"
-SALT2_SIZE = 16
+SECRET2 = b"GfkGCGfrk5l6S521koyfjR24fkFsdufgEndEFlfPvFwJR"
+SALT2_SIZE = 12
 
 
 def get_user_tokens():
@@ -33,7 +33,7 @@ def generate():
     json.dump({
         "flags": [flag],
         "substitutions": {},
-        "urls": [f"https://hantatonlive.{{hostname}}/{token}"]
+        "urls": [f"https://thevillage.{{hostname}}/{token}"]
     }, sys.stdout)
 
 

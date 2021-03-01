@@ -1,0 +1,7 @@
+category:   "web"
+name:       "Nothing to see"
+points:     100
+author:     "javach"
+description: >
+  <p>Нечего там смотреть.</p>
+generator: generate.py

@@ -1,9 +1,10 @@
-category: "stego"
+category: "stegano"
 name:     "Hantaton Live"
 points:   350
 author:   vanyaklimenko
 description: |
     <p>Читателям нашего курса очень понравилась музыка, которая его сопровождала. Так уж и быть, мы опубликовали секретную разработку, которая позволила нам её написать. Только никому! Мы проверим.</p>
+    <p><strong>Добавлено 28 февраля в 21:28:</strong> чем больше различных аудиозаписей вы скачаете, тем проще вам будет найти в них тот самый общий для них всех неслышимый цифровой отпечаток.</p>
 generator: generate.py
 daemon: app/server.py
 daemon_socket: "hantatonlive.sock"
