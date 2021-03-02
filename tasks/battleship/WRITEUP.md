@@ -38,17 +38,17 @@ r<sub>2</sub><sup>2</sup> = AB<sup>2</sup> + r<sub>1</sub><sup>2</sup> - 2 r<sub
 
 cos α = (AB<sup>2</sup> + r<sub>1</sub><sup>2</sup> - r<sub>2</sub><sup>2</sup>) / 2 r<sub>1</sub> AB;
 
-sin α = sqrt(1 - cos<sup>2</sup> α.
+sin α = sqrt(1 - cos<sup>2</sup> α).
 
-Теперь найдём вектор AM (m⃗): m⃗ = (B⃗ - A⃗) * r<sup>1</sup> / AB.
+Теперь найдём вектор AM (m⃗): m⃗ = (B⃗ - A⃗) ⋅ r<sub>1</sub> / AB.
 
 И повернём его на углы α и -α:
 
-c⃗<sup>1</sup> = (cos α * x<sup>m</sup> - sin α * y<sup>m</sup>, sin α * x<sup>m</sup> + cos α * y<sup>m</sup>);
+c⃗<sub>1</sub> = (cos α . x<sub>m</sub> - sin α ⋅ y<sub>m</sub>, sin α ⋅ x<sub>m</sup> + cos α ⋅ y<sup>m</sup>);
 
-c⃗<sup>2</sup> = (cos -α * x<sup>m</sup> - sin -α * y<sup>m</sup>, sin -α * x<sup>m</sup> + cos -α * y<sup>m</sup>) = (cos α * x<sup>m</sup> + sin α * y<sup>m</sup>, -sin α * x<sup>m</sup> + cos α * y<sup>m</sup>);
+c⃗<sub>2</sub> = (cos -α ⋅ x<sub>m</sub> - sin -α ⋅ y<sub>m</sub>, sin -α ⋅ x<sub>m</sub> + cos -α ⋅ y<sub>m</sub>) = (cos α ⋅ x<sub>m</sub> + sin α ⋅ y<sub>m</sub>, -sin α ⋅ x<sub>m</sub> + cos α ⋅ y<sub>m</sub>);
 
-Соответственно, точка C⃗<sup>1</sup> = A⃗ + c⃗<sup>1</sup>; C⃗<sup>2</sup> = A⃗ + c⃗<sup>2</sup>.
+Соответственно, точка C⃗<sub>1</sub> = A⃗ + c⃗<sub>1</sub>; C⃗<sub>2</sub> = A⃗ + c⃗<sub>2</sup>.
 
 Выстрелим по C<sub>1</sub>. Если мы попали, победа в наших руках. Если же нет, выстрелим сразу же по C<sub>1</sub>.
 
