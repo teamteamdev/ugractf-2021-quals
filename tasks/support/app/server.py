@@ -22,7 +22,8 @@ FLAG_SECRET = b'sculpture-generation-manufacture-execution-personality'
 FLAG_SALT_SIZE = 12
 
 HOST = 'https://support.q.2021.ugractf.ru'
-BOT_TOKEN = '1627682255:AAEpdi_Xi-cvMCRO-Tl9D_7FzasSsz_j2bw'
+with open(os.path.join(STATE_DIR, "token")) as f:
+    BOT_TOKEN = f.read().strip()
 WEBHOOK_PATH = f'/{hashlib.sha512(BOT_TOKEN.encode()).hexdigest()}'
 
 
