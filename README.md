@@ -4,6 +4,26 @@
 
 ## Таски
 
+[Антивирус](tasks/antivirus/) (pwn 250, abbradar)  
+[Арбатско-Покровская линия?](tasks/apl/) (crypto 150, ksixty)  
+[Морской бой](tasks/battleship/) (ppc 300, abbradar)  
+[Сертификация соответствия](tasks/compliance/) (web 150, kalan)  
+[Конгресс](tasks/congress/) (ppc 200, nsychev)  
+[Книга пути и достоинства](tasks/daodejing/) (misc 150, kalan)  
+[Новейшая разработка](tasks/developers/) (forensics 200, kalan)  
+[Команда мечты](tasks/dreamteam/) (recon 100, kalan)  
+[Hantaton Live](tasks/hantatonlive/) (stegano 350, ksixty)  
+[Набор отрезков](tasks/linear/) (misc 200, kalan)  
+[noteasy+82](tasks/noteasy82/) (crypto 250, kalan)  
+[Nothing to see](tasks/nothingtosee/) (web 100, javach)  
+[Восьмиборье](tasks/octathlon/) (stegano 150, abbradar)  
+[Служба одного порта](tasks/onestop/) (network 200, abbradar)  
+[Мощный шифр](tasks/powerful/) (crypto 250, nsychev)  
+[Вокруг да около](tasks/round/) (reverse 150, abbradar)  
+[Огни города поменьше](tasks/smallercitylights/) (recon 400, kalan)  
+[ЦНИИВТ](tasks/soviet/) (stegano 150, nsychev)  
+[База знаний](tasks/support/) (misc 250, nsychev)  
+[Сельский клуб](tasks/thevillage/) (web 300, ksixty)
 
 ## Команда разработки
 
@@ -13,7 +33,7 @@
 [Калан Абе](https://github.com/kalan) — разработчик тасков  
 [Коля Амиантов](https://github.com/abbradar) — разработчик тасков и платформы  
 [Ярослав Бурматов](https://github.com/javach) — разработчик тасков  
-[Ваня Клименко](https://github.com/vanyaklimenko) — разработчик тасков и сайта, дизайнер  
+[Ваня Клименко](https://github.com/ksixty) — разработчик тасков и сайта, дизайнер  
 [Катя Ковальчук](https://behance.net/nclbrt) — иллюстратор
 
 ## Организаторы
