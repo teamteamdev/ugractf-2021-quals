@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="77.876793mm"
+   height="50.996357mm"
+   viewBox="0 0 77.876793 50.996357"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
@@ -17,80 +17,24 @@
   <defs
      id="defs2">
     <rect
-       x="129.52526"
+       x="129.52525"
        y="110.59381"
-       width="86.605346"
-       height="55.350631"
+       width="86.605347"
+       height="55.350632"
        id="rect1947" />
     <marker
-       style="overflow:visible;"
+       style="overflow:visible"
        id="marker1789"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        orient="auto"
        inkscape:stockid="Arrow1Mend"
        inkscape:isstock="true">
       <path
-         transform="scale(0.4) rotate(180) translate(10,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1787" />
-    </marker>
-    <marker
-       style="overflow:visible;"
-       id="marker1747"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="Arrow1Mend"
-       inkscape:isstock="true">
-      <path
-         transform="scale(0.4) rotate(180) translate(10,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         id="path1745" />
-    </marker>
-    <marker
-       style="overflow:visible;"
-       id="marker1691"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="Arrow1Mend"
-       inkscape:isstock="true">
-      <path
-         transform="scale(0.4) rotate(180) translate(10,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         id="path1689" />
-    </marker>
-    <marker
-       style="overflow:visible;"
-       id="Arrow1Mend"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="Arrow1Mend"
-       inkscape:isstock="true">
-      <path
-         transform="scale(0.4) rotate(180) translate(10,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         id="path1120" />
-    </marker>
-    <marker
-       style="overflow:visible;"
-       id="marker1503"
-       refX="0.0"
-       refY="0.0"
-       orient="auto"
-       inkscape:stockid="Arrow1Lend"
-       inkscape:isstock="true">
-      <path
-         transform="scale(0.8) rotate(180) translate(12.5,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         id="path1501" />
     </marker>
   </defs>
   <sodipodi:namedview
@@ -100,9 +44,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10.12924"
-     inkscape:cx="315.44528"
-     inkscape:cy="300.8709"
+     inkscape:zoom="2.9702366"
+     inkscape:cx="139.58894"
+     inkscape:cy="67.993425"
      inkscape:document-units="mm"
      inkscape:current-layer="layer3"
      inkscape:document-rotation="0"
@@ -116,10 +60,16 @@
      inkscape:window-y="34"
      inkscape:window-maximized="1"
      inkscape:snap-bbox="false"
-     inkscape:object-paths="true">
+     inkscape:object-paths="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
-       id="grid1657" />
+       id="grid1657"
+       originx="-45.517218"
+       originy="-57.84557" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -129,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -137,7 +87,8 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="mix-blend-mode:exclusion">
+     style="mix-blend-mode:exclusion"
+     transform="translate(-45.517219,-57.845571)">
     <circle
        style="fill:#d5e900;fill-opacity:0.3;stroke:#ffff00;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
        id="path833"
@@ -149,7 +100,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer 2"
-     style="display:inline;opacity:1;mix-blend-mode:exclusion">
+     style="display:inline;opacity:1;mix-blend-mode:exclusion"
+     transform="translate(-45.517219,-57.845571)">
     <circle
        style="fill:#d5e900;fill-opacity:0.3;stroke:#aad400;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
        id="path833-1"
@@ -219,7 +171,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Arrows">
+     inkscape:label="Arrows"
+     transform="translate(-45.517219,-57.845571)">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 66.145835,83.343749 h 31.75"
