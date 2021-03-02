@@ -3,3 +3,5 @@ private/round.exe filter=lfs diff=lfs merge=lfs -text
 private/platforms/qwindows.dll filter=lfs diff=lfs merge=lfs -text
 private/Qt5Core.dll filter=lfs diff=lfs merge=lfs -text
 private/Qt5Gui.dll filter=lfs diff=lfs merge=lfs -text
+writeup/stack.png filter=lfs diff=lfs merge=lfs -text
+writeup/window.png filter=lfs diff=lfs merge=lfs -text
