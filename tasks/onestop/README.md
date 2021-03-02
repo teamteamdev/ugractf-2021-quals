@@ -8,7 +8,7 @@ network 200, @abbradar
 >
 > **Добавлено 28 февраля в 23:45:** Технология ALPN поддерживает произвольные названия протоколов, в том числе и соответствующие _стандарту UTF-8_.
 >
-> _https://onestop.q.2021.ugractf.ru_  
+> https://onestop.q.2021.ugractf.ru  
 > Пароль: `...`
 
 [Write-up](WRITEUP.md)

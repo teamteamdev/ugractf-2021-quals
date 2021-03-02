@@ -4,6 +4,6 @@ ppc 300, @abbradar
 
 > Мы разработали новую игру на тему бессмертной классики. Теперь вражеский корабль всего один, зато он передвигается! Сможете попасть?
 >
-> _https://battleship.q.2021.ugractf.ru/token/_
+> https://battleship.q.2021.ugractf.ru/token/
 
 [Write-up](WRITEUP.md)

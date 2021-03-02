@@ -10,6 +10,6 @@ misc 250, @nsychev
 > 
 > **Добавлено 28 февраля в 22:45:** Источники в отделе прикладных разработок UgraPay сообщают нам, что по данным ченджлогов в добавленной функциональности фигурирует слово inline.
 >
-> _https://t.me/ugrapaysupportbot?start=token_
+> https://t.me/ugrapaysupportbot?start=token
 
 [Write-up](WRITEUP.md)

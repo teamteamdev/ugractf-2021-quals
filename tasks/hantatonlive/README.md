@@ -6,6 +6,6 @@ stegano 350, @ksixty
 >
 > **Добавлено 28 февраля в 21:28:** чем больше различных аудиозаписей вы скачаете, тем проще вам будет найти в них тот самый общий для них всех неслышимый цифровой отпечаток.
 >
-> _https://hantatonlive.q.2021.ugractf.ru/token_
+> https://hantatonlive.q.2021.ugractf.ru/token
 
 [Write-up](WRITEUP.md)

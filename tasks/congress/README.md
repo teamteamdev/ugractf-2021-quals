@@ -6,6 +6,6 @@ ppc 200, @nsychev
 >
 > Участникам конгресса уже доступны материалы докладов. Мы оформили вам персональное приглашение, для участия нужно всего лишь зарегистрироваться...
 >
-> _https://congress.q.2021.ugractf.ru/?ref=token_
+> https://congress.q.2021.ugractf.ru/?ref=token
 
 [Write-up](WRITEUP.md)

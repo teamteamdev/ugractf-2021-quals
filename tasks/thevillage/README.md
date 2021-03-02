@@ -7,6 +7,6 @@ web 300, @ksixty
 > На одной из сургутских тусовок наш агент совершил акт шпионажа, в ходе которого было получено фото приглашения в эту загадочную социальную сеть. Надеемся, он ещё не протух!
 >
 > [photo.png](public/photo.png)  
-> _https://thevillage.q.2021.ugractf.ru/token/_
+> https://thevillage.q.2021.ugractf.ru/token/
 
 [Write-up](WRITEUP.md)

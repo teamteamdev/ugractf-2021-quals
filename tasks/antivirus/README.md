@@ -4,6 +4,6 @@ pwn 250, @abbradar
 
 > Югорские разработчики создали новый облачный антивирус, с больщой точностью определяющий вредоносные приложения. Но хорошо ли протестирован сам антивирус?
 >
-> _https://antivirus.q.2021.ugractf.ru/token/_
+> https://antivirus.q.2021.ugractf.ru/token/
 
 [Write-up](WRITEUP.md)
