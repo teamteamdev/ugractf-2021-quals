@@ -65,7 +65,6 @@ BATTLESHIP_URL = "https://battleship.q.2021.ugractf.ru/token"
 with requests.Session() as s:
   # Start the game.
   s.post(f"{BATTLESHIP_URL}/reset", cookies=jar).raise_for_status()
-  ret.raise_for_status()
 
   def fire(p):
     """
