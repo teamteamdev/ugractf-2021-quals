@@ -68,7 +68,7 @@ with requests.Session() as s:
 
   def fire(p):
     """
-    Fire with given NumPy point. Return distance on a miss, otherwise print result and exit.
+    Fire at given NumPy point. Return distance on a miss, otherwise print result and exit.
     """
 
     ret = s.post(f"{BATTLESHIP_URL}/fire", cookies=jar, data={"x": p[0], "y": p[1]})
