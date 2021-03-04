@@ -1,0 +1,9 @@
+house-of-bricks-matching.png filter=lfs diff=lfs merge=lfs -text
+map-lines.jpg filter=lfs diff=lfs merge=lfs -text
+theater.jpg filter=lfs diff=lfs merge=lfs -text
+fake-search-area.png filter=lfs diff=lfs merge=lfs -text
+from-above.png filter=lfs diff=lfs merge=lfs -text
+panorama-lines.jpg filter=lfs diff=lfs merge=lfs -text
+stitching.jpg filter=lfs diff=lfs merge=lfs -text
+true-search-area.png filter=lfs diff=lfs merge=lfs -text
+38-line.jpg filter=lfs diff=lfs merge=lfs -text
