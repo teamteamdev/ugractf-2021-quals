@@ -18,4 +18,4 @@ ctf@onestop.q.2021.ugractf.ru: Permission denied (publickey).
 
 Пробумем название сервиса `текстовый`: бинго!  Видим приглашение `PWD?`. Введя в него пароль из задания, получаем искомый флаг.
 
-Флаг: **ugra_social_services_for_the_masses_ff76c5513401closed**
+Флаг: **ugra_social_services_for_the_masses_ff76c5513401**
